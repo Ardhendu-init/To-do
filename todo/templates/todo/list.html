@@ -1,0 +1,22 @@
+{% extends "todo/base.html" %}
+    {% block content %}
+            <h1>To-Do</h1>
+            <form method="POST" action="/">
+                {% csrf_token %}
+                {{form.title}}
+                <input class="btn btn-outline-info" type="submit"  name ='Create a task'>
+            </form>
+            
+        {% for task in tasks %}
+        <div>
+                <a class="btn btn-outline-info" href="{% url 'update-task' task.id %}"> Update </a>
+                <a class="btn btn-outline-danger" href="{% url 'delete-task' task.id %}"> Delete </a>
+                {% if task.complete == True %}
+                    <strike>{{ task }}</strike>
+                {% else %}
+                    <span>{{ task }}</span>
+                {% endif %}
+            </div>
+        {% endfor %}
+            
+    {% endblock %}
