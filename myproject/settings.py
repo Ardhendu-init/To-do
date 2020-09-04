@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'todo',
-    'crispy_forms'
+    'crispy_forms',
+    'rest_framework'
     
 ]
 
@@ -124,3 +125,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 CRISPY_TEMPLATE_PACK ='bootstrap4'
+REST_FRAMEWORK = {
+'DEFAULT_PERMISSION_CLASSES': [
+'rest_framework.permissions.AllowAny',
+]
+}

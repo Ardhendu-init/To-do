@@ -1,6 +1,8 @@
 from django.shortcuts import render,redirect
 from .models import Task
 from todo.forms import TaskForm
+from rest_framework import generics
+from .serializers import TaskSerializer
 
 
 def home(request):
@@ -34,5 +36,9 @@ def DeleteTask(request, pk):
     
     context = {'item':item}
     return render(request,'todo/delete.html', context)
+
+class ListTask(generics.ListAPIView):
+    queryset = Task.objects.all()
+    serializer_class = TaskSerializer
 
  
